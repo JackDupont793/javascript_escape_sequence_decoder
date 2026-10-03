@@ -1,0 +1,14 @@
+[project]
+name = "javascript-escape-sequence-decoder"
+version = "0.1.0"
+description = "Decodes JavaScript string escape sequences, including \u####, \x##, \u{...}, octal, and named escape sequences."
+requires-python = ">=3.10"
+dependencies = []
+readme = "README.md"
+
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools.packages.find]
+where = ["src"]
