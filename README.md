@@ -31,3 +31,10 @@ When ingesting JSON or source files that contain JavaScript string literals, esc
 - **Legacy octal escapes** (`\1` to `\377`) are supported and map to Latin-1 code points, matching how browsers treat them in non-strict mode.
 - **Out-of-range code points** (`\u{110000}`) raise `ValueError`. The maximum valid code point is `U+10FFFF`.
 - The decoder operates on the full string at once. It is not a streaming parser; very large inputs are processed in memory.
+
+## Performance
+
+The window keeps a bounded buffer, so `push` is constant time and memory does not
+grow with the length of the stream. `peak` and `trough` are linear in the window
+size, which is the trade that keeps `push` cheap.
+
